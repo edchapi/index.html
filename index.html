@@ -1,256 +1,344 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clientes Customer Success</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clientes Customer Success</title>
 
-    body {
-      background: #f5f6f8;
-      padding: 24px;
-    }
+<style>
 
-    .slider-container {
-      max-width: 1100px;
-      margin: auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      background: white;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial, sans-serif;
+}
 
-    .slides {
-      display: flex;
-      transition: transform 0.4s ease-in-out;
-      width: 100%;
-    }
+body{
+background:#f5f6f8;
+padding:24px;
+}
 
-    .slide {
-      min-width: 100%;
-      display: flex;
-      align-items: stretch;
-      min-height: 420px;
-    }
+.slider-container{
+max-width:1100px;
+margin:auto;
+position:relative;
+overflow:hidden;
+border-radius:18px;
+background:white;
+box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
 
-    .slide-image {
-      width: 58%;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-    }
+.slides{
+display:flex;
+transition:transform .4s ease-in-out;
+width:100%;
+}
 
-    .slide-image img {
-      max-width: 100%;
-      max-height: 280px;
-      object-fit: contain;
-    }
+.slide{
+min-width:100%;
+display:flex;
+align-items:stretch;
+min-height:420px;
+}
 
-    .slide-content {
-      width: 42%;
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: #f2f4f7;
-    }
+.slide-image{
+width:58%;
+background:#ffffff;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+}
 
-    .slide-content h2 {
-      font-size: 34px;
-      margin-bottom: 16px;
-      color: #1f2937;
-    }
+.slide-image img{
+max-width:100%;
+max-height:280px;
+object-fit:contain;
+}
 
-    .slide-content p {
-      font-size: 17px;
-      line-height: 1.6;
-      color: #4b5563;
-      margin-bottom: 24px;
-    }
+.slide-content{
+width:42%;
+padding:48px 40px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+background:#f2f4f7;
+}
 
-    .btn {
-      display: inline-block;
-      background: #0b57d0;
-      color: white;
-      text-decoration: none;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-weight: bold;
-      width: fit-content;
-    }
+.slide-content h2{
+font-size:34px;
+margin-bottom:16px;
+color:#1f2937;
+}
 
-    .btn:hover {
-      background: #0847aa;
-    }
+.slide-content p{
+font-size:17px;
+line-height:1.6;
+color:#4b5563;
+margin-bottom:24px;
+}
 
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.35);
-      color: white;
-      border: none;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      font-size: 22px;
-      cursor: pointer;
-      z-index: 10;
-    }
+.btn{
+display:inline-block;
+background:#0b57d0;
+color:white;
+text-decoration:none;
+padding:14px 24px;
+border-radius:999px;
+font-weight:bold;
+width:fit-content;
+}
 
-    .prev {
-      left: 14px;
-    }
+.btn:hover{
+background:#0847aa;
+}
 
-    .next {
-      right: 14px;
-    }
+.nav-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.35);
+color:white;
+border:none;
+width:46px;
+height:46px;
+border-radius:50%;
+font-size:22px;
+cursor:pointer;
+z-index:10;
+}
 
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding: 16px 0 20px;
-      background: white;
-    }
+.prev{
+left:14px;
+}
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #cbd5e1;
-      cursor: pointer;
-    }
+.next{
+right:14px;
+}
 
-    .dot.active {
-      background: #0b57d0;
-    }
+.dots{
+display:flex;
+justify-content:center;
+gap:8px;
+padding:16px 0 20px;
+background:white;
+}
 
-    @media (max-width: 768px) {
-      .slide {
-        flex-direction: column;
-      }
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+background:#cbd5e1;
+cursor:pointer;
+}
 
-      .slide-image,
-      .slide-content {
-        width: 100%;
-      }
+.dot.active{
+background:#0b57d0;
+}
 
-      .slide-content {
-        padding: 28px 24px;
-      }
+@media (max-width:768px){
 
-      .slide-content h2 {
-        font-size: 28px;
-      }
-    }
-  </style>
+.slide{
+flex-direction:column;
+}
+
+.slide-image,
+.slide-content{
+width:100%;
+}
+
+.slide-content{
+padding:28px 24px;
+}
+
+.slide-content h2{
+font-size:28px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="slider-container">
-    <button class="nav-btn prev" onclick="prevSlide()">&#10094;</button>
-    <button class="nav-btn next" onclick="nextSlide()">&#10095;</button>
+<div class="slider-container">
 
-    <div class="slides" id="slides">
-      
-      <div class="slide">
-        <div class="slide-image">
-          <img src="ana.jpg" alt="ANA">
-        </div>
-        <div class="slide-content">
-          <h2>ANA</h2>
-          <p>Ingresa a los recursos del cliente para visualizar reportes, valor ganado, materiales de trabajo y páginas relacionadas dentro del sitio.</p>
-          <a class="btn" href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/ana" target="_blank">Ver cuenta</a>
-        </div>
-      </div>
-      
-      <div class="slide">
-        <div class="slide-image">
-          <img src="buenaventura.png" alt="Buenaventura">
-        </div>
-        <div class="slide-content">
-          <h2>Buenaventura</h2>
-          <p>Accede a la información centralizada del cliente: informes, valor ganado, licenciamiento, reuniones y materiales de soporte.</p>
-          <a class="btn" href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/buenaventura" target="_blank">Ver cuenta</a>
-        </div>
-      </div>
+<button class="nav-btn prev" onclick="prevSlide()">&#10094;</button>
+<button class="nav-btn next" onclick="nextSlide()">&#10095;</button>
 
-      <div class="slide">
-        <div class="slide-image">
-          <img src="oefa.png" alt="OEFA">
-        </div>
-        <div class="slide-content">
-          <h2>OEFA</h2>
-          <p>Revisa plan de acción, informes ELA, reuniones, presentaciones y estructura documental asociada al servicio del cliente.</p>
-          <a class="btn" href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/oefa" target="_blank">Ver cuenta</a>
-        </div>
-      </div>
+<div class="slides" id="slides">
 
-      <div class="slide">
-        <div class="slide-image">
-          <img src="osinergmin.jpg" alt="Osinergmin">
-        </div>
-        <div class="slide-content">
-          <h2>Osinergmin</h2>
-          <p>Consulta la documentación del cliente organizada por gestión, entregables, seguimiento y recursos relevantes para Customer Success.</p>
-          <a class="btn" href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/osinergmin" target="_blank">Ver cuenta</a>
-        </div>
-      </div>
+<!-- ANA -->
+<div class="slide">
+<div class="slide-image">
+<img src="ana.jpg" alt="ANA">
+</div>
 
-    </div>
+<div class="slide-content">
+<h2>ANA</h2>
 
-    <div class="dots" id="dots"></div>
-  </div>
+<p>
+Ingresa a los recursos del cliente para visualizar reportes,
+valor ganado, materiales de trabajo y páginas relacionadas
+dentro del sitio.
+</p>
 
-  <script>
-    const slides = document.getElementById("slides");
-    const totalSlides = document.querySelectorAll(".slide").length;
-    const dotsContainer = document.getElementById("dots");
-    let currentIndex = 0;
+<a class="btn"
+href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/ana">
+Ver cuenta
+</a>
 
-    function renderDots() {
-      dotsContainer.innerHTML = "";
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (i === currentIndex) dot.classList.add("active");
-        dot.addEventListener("click", () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-      }
-    }
+</div>
+</div>
 
-    function updateSlider() {
-      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-      renderDots();
-    }
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      updateSlider();
-    }
+<!-- BUENAVENTURA -->
+<div class="slide">
+<div class="slide-image">
+<img src="buenaventura.png" alt="Buenaventura">
+</div>
 
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-      updateSlider();
-    }
+<div class="slide-content">
 
-    function goToSlide(index) {
-      currentIndex = index;
-      updateSlider();
-    }
+<h2>Buenaventura</h2>
 
-    renderDots();
-  </script>
+<p>
+Accede a la información centralizada del cliente:
+informes, valor ganado, licenciamiento,
+reuniones y materiales de soporte.
+</p>
+
+<a class="btn"
+href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/buenaventura">
+Ver cuenta
+</a>
+
+</div>
+</div>
+
+
+<!-- OEFA -->
+<div class="slide">
+<div class="slide-image">
+<img src="oefa.png" alt="OEFA">
+</div>
+
+<div class="slide-content">
+
+<h2>OEFA</h2>
+
+<p>
+Revisa plan de acción, informes ELA,
+reuniones, presentaciones y
+estructura documental asociada al
+servicio del cliente.
+</p>
+
+<a class="btn"
+href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/oefa">
+Ver cuenta
+</a>
+
+</div>
+</div>
+
+
+<!-- OSINERGMIN -->
+<div class="slide">
+<div class="slide-image">
+<img src="osinergmin.jpg" alt="Osinergmin">
+</div>
+
+<div class="slide-content">
+
+<h2>Osinergmin</h2>
+
+<p>
+Consulta la documentación del cliente organizada
+por gestión, entregables, seguimiento y
+recursos relevantes para Customer Success.
+</p>
+
+<a class="btn"
+href="https://sites.google.com/telematica.com.pe/customersuccess/customer-success/osinergmin">
+Ver cuenta
+</a>
+
+</div>
+</div>
+
+
+</div>
+
+<div class="dots" id="dots"></div>
+
+</div>
+
+<script>
+
+const slides=document.getElementById("slides")
+const totalSlides=document.querySelectorAll(".slide").length
+const dotsContainer=document.getElementById("dots")
+
+let currentIndex=0
+
+function renderDots(){
+
+dotsContainer.innerHTML=""
+
+for(let i=0;i<totalSlides;i++){
+
+const dot=document.createElement("div")
+
+dot.classList.add("dot")
+
+if(i===currentIndex) dot.classList.add("active")
+
+dot.addEventListener("click",()=>goToSlide(i))
+
+dotsContainer.appendChild(dot)
+
+}
+
+}
+
+function updateSlider(){
+
+slides.style.transform=`translateX(-${currentIndex*100}%)`
+
+renderDots()
+
+}
+
+function nextSlide(){
+
+currentIndex=(currentIndex+1)%totalSlides
+
+updateSlider()
+
+}
+
+function prevSlide(){
+
+currentIndex=(currentIndex-1+totalSlides)%totalSlides
+
+updateSlider()
+
+}
+
+function goToSlide(index){
+
+currentIndex=index
+
+updateSlider()
+
+}
+
+renderDots()
+
+</script>
 
 </body>
 </html>
